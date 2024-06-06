@@ -5,13 +5,13 @@ const app = express();
 app.use(bodyParser.json());
 
 const mockDataBase =[
-    { id: 1, name: 'Maria Andreina Garcia', email: 'mariaandreina@example.com' },
-    { id: 2, name: 'Maria Fernanda Lopez', email: 'mariafernanda@example.com' },
-    { id: 3, name: 'Alicia Machado', email: 'aliciamachado@example.com' },
-    { id: 4, name: 'Marcelo Hernandez', email: 'marcelohernandez@example.com' },
-    { id: 5, name: 'Daniela Mendoza', email: 'danielamendoza@example.com' },
-    { id: 6, name: 'Andrea Bento', email: 'andreabento@example.com' },
-    { id: 7, name: 'Camila Escalona', email: 'camilaescalona@example.com' }
+    { id: 1, name: 'Maria Andreina Garcia', email: 'maria.andreina@example.com' },
+    { id: 2, name: 'Maria Fernanda Lopez', email: 'maria.fernanda@example.com' },
+    { id: 3, name: 'Alicia Machado', email: 'alicia.machado@example.com' },
+    { id: 4, name: 'Marcelo Hernandez', email: 'marcelo.hernandez@example.com' },
+    { id: 5, name: 'Daniela Mendoza', email: 'daniela.mendoza@example.com' },
+    { id: 6, name: 'Andrea Bento', email: 'andrea.bento@example.com' },
+    { id: 7, name: 'Camila Escalona', email: 'camila.escalona@example.com' }
 ];
 
 // async function
@@ -58,8 +58,8 @@ app.delete('/api/data/:id', async(req, res) => {
     }
 });
 
-// lsitens for requests on port 3001
-const PORT = process.env.PORT || 3001;
+// lsitens for requests on port 3000
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
