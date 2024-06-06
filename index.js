@@ -1,10 +1,18 @@
-const express = require('express');
+const express = require('express'); 
 const bodyParser = require('body-parser');
-
-let db = [];
 
 const app = express();
 app.use(bodyParser.json());
+
+const mockDataBase =[
+    { id: 1, name: 'John Smith', email: 'john.smith@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com' },
+    { id: 3, name: 'Alice Johnson', email: 'alice.johnson@example.com' },
+    { id: 4, name: 'Bob Williams', email: 'bob.williams@example.com' },
+    { id: 5, name: 'Charlie Brown', email: 'charlie.brown@example.com' },
+    { id: 6, name: 'David Green', email: 'david.green@example.com' },
+    { id: 7, name: 'Eva White', email: 'eva.white@example.com' }
+];
 
 // async function
 function delay(ms) {
@@ -12,48 +20,46 @@ function delay(ms) {
 }
 
 //await can only be used with async fucntions
-app.get('/api/data',  async (req,res) => {
+app.get('/api/data', async(req,res) => {
     await delay (1000);
-    res.json(db);
+    res.json(mockDataBase);
 });
 
-app.post('/api/data', async (req,res) => {
-    const { name, age } = req.body;
-    const id = Date.now();
+app.post('/api/data', async(req,res) => {
+    const newData = req.body;
     await delay(500);
-    db.push({ id,...req.body });
-    res.status(201).json({ message: "Entry added", data: db[db.length - 1] });
+    mockDataBase.push(newData);
+    res.status(201).send('Data was added succesfully');
 });
 
-app.put('/api/data/:id', async (req, res) => {
+app.put('/api/data/:id', async(req, res) => {
     const { id } = req.params;
-    const { name, age } = req.body;
-    const index = db.findIndex(entry => entry.id === Number(id));
-
+    const updateData = req.body;
+    await delay(700);
+    const index = mockDataBase.findIndex(item => item.id === Number(id));
     if (index!== -1) {
-        await delay(300);
-        db[index] = {...req.body };
-        res.json({ message: "Entry updated" });
+        mockDataBase[index] = updateData;
+        res.send('Data updated successfully');
     } else {
-        res.status(404).json({ message: "Entry not found" });
+        res.status(404).send('Data not found');
     }
 });
 
-app.delete('/api/data/:id', async (req, res) => {
+app.delete('/api/data/:id', async(req, res) => {
     const { id } = req.params;
-    const index = db.findIndex(entry => entry.id === Number(id));
-
+    await delay(300);
+    const index = mockDataBase.findIndex(item => item.id === Number(id));
     if (index!== -1) {
         await delay(200);
-        db.splice(index, 1);
-        res.json({ message: "Entry deleted" });
+        mockDataBase.splice(index, 1);
+        res.send('Data deleted successfully');
     } else {
-        res.status(404).json({ message: "Entry not found" });
+        res.status(404).send('Data not found');
     }
 });
 
-// lsitens for requests on port 3000
-const PORT = 3000;
+// lsitens for requests on port 3001
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
