@@ -5,13 +5,13 @@ const app = express();
 app.use(bodyParser.json());
 
 const mockDataBase =[
-    { id: 1, name: 'John Smith', email: 'john.smith@example.com' },
-    { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com' },
-    { id: 3, name: 'Alice Johnson', email: 'alice.johnson@example.com' },
-    { id: 4, name: 'Bob Williams', email: 'bob.williams@example.com' },
-    { id: 5, name: 'Charlie Brown', email: 'charlie.brown@example.com' },
-    { id: 6, name: 'David Green', email: 'david.green@example.com' },
-    { id: 7, name: 'Eva White', email: 'eva.white@example.com' }
+    { id: 1, name: 'Maria Andreina Garcia', email: 'mariaandreina@example.com' },
+    { id: 2, name: 'Maria Fernanda Lopez', email: 'mariafernanda@example.com' },
+    { id: 3, name: 'Alicia Machado', email: 'aliciamachado@example.com' },
+    { id: 4, name: 'Marcelo Hernandez', email: 'marcelohernandez@example.com' },
+    { id: 5, name: 'Daniela Mendoza', email: 'danielamendoza@example.com' },
+    { id: 6, name: 'Andrea Bento', email: 'andreabento@example.com' },
+    { id: 7, name: 'Camila Escalona', email: 'camilaescalona@example.com' }
 ];
 
 // async function
